@@ -1,10 +1,11 @@
-import React from 'react';
-import { TodoItem } from './TodoItem';
-
-import createQueryFn from '../util/createQueryFn';
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
+
+import { TodoItem } from './TodoItem';
 import Loading from './Loading';
 import Pager from './Pager';
+
+import createQueryFn from '../util/createQueryFn';
 
 const DEFAULT_LIMIT = 10;
 
@@ -14,7 +15,12 @@ const getTodoFetcher = (page = 1) =>
   );
 
 export default function TodoList() {
-  const { data, status } = useQuery(['todos'], getTodoFetcher());
+  const [page, setPage] = useState(1);
+
+  const { data, status } = useQuery(
+    ['todos', { page, limit: DEFAULT_LIMIT }],
+    getTodoFetcher(page)
+  );
 
   return (
     <ul className="todo-list-container">
@@ -27,11 +33,9 @@ export default function TodoList() {
             </TodoItem>
           ))}
           <Pager
-            currentPage={1}
-            maxPage={Math.ceil(data.totalCount / 10)}
-            onChange={(pageNumber) => {
-              // set this pageNumber as a query parameter
-            }}
+            maxPage={Math.ceil(data.totalCount / DEFAULT_LIMIT)}
+            currentPage={page}
+            onChange={setPage}
           />
         </>
       )}
