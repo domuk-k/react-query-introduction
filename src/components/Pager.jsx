@@ -6,7 +6,7 @@ const getRange = (start = 0, end = 0) =>
   Array.from({ length: end - start }, (_, index) => index + start);
 
 export default function Pager({ currentPage = 1, maxPage, onChange }) {
-  if (!maxPage) return null;
+  if (!maxPage || maxPage < 0 || currentPage < 0) return null;
 
   if (maxPage < currentPage) {
     if (process.env.NODE_ENV !== 'production') {
@@ -17,15 +17,12 @@ export default function Pager({ currentPage = 1, maxPage, onChange }) {
   const pageNumbers = (
     Math.max(0, currentPage - PAGER_VIEW_PORT / 2)
       ? Math.min(maxPage, currentPage + PAGER_VIEW_PORT / 2) === maxPage
-        ? // upper bounds
-          getRange(Math.max(0, maxPage - PAGER_VIEW_PORT), maxPage)
-        : // inner
-          getRange(
+        ? getRange(Math.max(0, maxPage - PAGER_VIEW_PORT), maxPage)
+        : getRange(
             currentPage - PAGER_VIEW_PORT / 2,
             currentPage + PAGER_VIEW_PORT / 2
           )
-      : // bottom bounds
-        getRange(0, Math.min(maxPage, PAGER_VIEW_PORT))
+      : getRange(0, Math.min(maxPage, PAGER_VIEW_PORT))
   ).map((index) => index + 1);
 
   return (
