@@ -17,10 +17,7 @@ const getTodoFetcher = (page = 1) =>
 export default function TodoList() {
   const [page, setPage] = useState(1);
 
-  const { data, status } = useQuery(
-    ['todos', { page, limit: DEFAULT_LIMIT }],
-    getTodoFetcher(page)
-  );
+  const { data, status } = useQuery(['todos', { page }], getTodoFetcher(page));
 
   return (
     <ul className="todo-list-container">
