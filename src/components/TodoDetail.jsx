@@ -1,17 +1,30 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-
-const todo = {
-  id: 'mock-id',
-  title: 'Todo 목데이터',
-  done: false,
-  description: 'mock-description',
-};
+import createQueryFn from '../util/createQueryFn';
 
 /**
  * 이 컴포넌트는 외부로 부터 todo개체의 id를 받아서 해당 id로 todo상세정보를 조회하고, 표현합니다.
  */
-function TodoDetail() {
-  // id를 props으로 받아오고, useQuery를 사용해서, `todo.description` 정보가 포함된 UI를 표현하세요.
+function TodoDetail({ id }) {
+  const {
+    data: todo,
+    status,
+    error,
+  } = useQuery(['todos', id], createQueryFn(`/todo/${id}`));
+
+  if (status === 'loading') {
+    return '상세 정보 가져오는 중..';
+  }
+
+  if (status === 'error') {
+    return (
+      <section>
+        상세 정보 조회중 에러가 발생했습니다'
+        <span>{error.message}</span>
+      </section>
+    );
+  }
+
   return (
     <>
       <section className="todo-detail-header">
