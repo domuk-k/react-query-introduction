@@ -1,7 +1,7 @@
 import React from 'react';
 import { TodoItem } from './TodoItem';
 
-// import createQueryFn from '../util/fetcher'
+// import createQueryFn from '../util/createQueryFn'
 
 const todoData = [
   {
