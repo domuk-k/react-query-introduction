@@ -1,9 +1,14 @@
 import React from 'react';
 
-export function TodoItem({ children, id }) {
+export function TodoItem({ children, id, done }) {
   return (
     <li className="todo-item">
-      <input id={`todo-done-${id}`} className="todo-checkbox" type="checkbox" />
+      <input
+        id={`todo-done-${id}`}
+        className="todo-checkbox"
+        type="checkbox"
+        checked={done}
+      />
       <label htmlFor={`todo-done-${id}`} className="todo-title">
         {children}
       </label>
