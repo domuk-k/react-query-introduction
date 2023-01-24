@@ -11,6 +11,7 @@ function TodoDetail() {
   return (
     <>
       <section className="todo-detail-header">
+        {todo.done && <div> ✅ </div>}
         <h2 className="todo-detail-title">{todo.title}</h2>
         <button type="button" className="todo-detail-update">
           수정
