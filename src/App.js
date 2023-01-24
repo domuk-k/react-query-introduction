@@ -1,11 +1,12 @@
+import EntryInput from './components/EntryInput';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        React Query - useQuery for list view
-      </header>
+    <div className="container">
+      <header className="header">Todo App</header>
+      <EntryInput />
     </div>
   );
 }
