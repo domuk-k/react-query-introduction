@@ -3,7 +3,7 @@ import Modal from './Modal';
 import TodoDetail from './TodoDetail';
 
 export function TodoItem({ children, id, done }) {
-  const [isDetailModelOpen, setIsDetailModelOpen] = useState(true);
+  const [isDetailModelOpen, setIsDetailModelOpen] = useState(false);
 
   return (
     <>

@@ -3,13 +3,13 @@ import { TodoItem } from './TodoItem';
 
 const todoData = [
   {
-    id: 'fc6bb456-8d99-4b30-9f4d-f720045607b5',
-    title: 'crick',
+    id: 'b4dcf2df-3ff8-4441-b037-9adab856ea35',
+    title: 'tunnel',
     done: false,
   },
   {
-    id: '7cvu3h54-8d99-4b30-9f4d-f720045607b5',
-    title: 'flicker',
+    id: '4640b161-872d-4609-bc4d-f3a677466a48',
+    title: 'apply',
     done: false,
   },
 ];
@@ -17,7 +17,7 @@ const todoData = [
 export default function TodoList() {
   return (
     <ul className="todo-list-container">
-      {todoData.map((todo) => (
+      {todoData?.map((todo) => (
         <TodoItem id={todo.id} done={todo.done} key={todo.id}>
           {todo.title}
         </TodoItem>
