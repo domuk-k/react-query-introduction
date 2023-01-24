@@ -3,11 +3,27 @@
   user-select: none;
 }
 
+h1,
+h2 {
+  margin: 0;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
 .container {
   padding: 20px;
   margin: 0 auto;
-  max-width: 45vw;
+  max-width: 35vw;
   min-width: 250px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
 }
 
 .header {
@@ -18,6 +34,8 @@
 
 .entry-input {
   width: 100%;
+  padding: 8px;
+  font-size: 18px;
 }
 
 .entry-submit-button {
@@ -55,29 +73,102 @@
   display: flex;
   gap: 12px;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
 .todo-title {
   text-align: left;
   flex: 1;
+  font-size: 24px;
 }
 
 .todo-checkbox {
   display: flex;
-  height: 12px;
-  width: 12px;
+  height: 20px;
+  width: 20px;
 }
 
 .todo-remove-button {
   background-color: white;
-  padding: 0.5rem;
+  padding: 6px;
   color: #ef4444;
   border-radius: 0.5rem;
   border: #ef4444 2px solid;
 }
 
-.todo-remove-button:hover {
+.todo-detail-button:hover {
   color: white;
   background: #ef4444;
+}
+.todo-detail-button {
+  background-color: white;
+  padding: 6px;
+  color: #1e69ff;
+  border-radius: 0.5rem;
+  border: #1e69ff 2px solid;
+}
+
+.todo-detail-button:hover {
+  color: white;
+  background: #1e69ff;
+}
+
+.todo-detail-header {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.todo-detail-title {
+  display: flex;
+  gap: 6px;
+}
+
+.todo-detail-update {
+  display: flex;
+  gap: 6px;
+  padding-right: 12px;
+  color: rgb(47, 47, 47);
+  cursor: pointer;
+}
+
+.todo-detail-description {
+  display: flex;
+  font-size: medium;
+  gap: 6px;
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  background: rgb(255, 255, 255);
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 12px 16px;
+  width: 30vw;
+}
+
+.modal-close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  background-color: #06060625;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
