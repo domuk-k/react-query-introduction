@@ -8,12 +8,12 @@ import Loading from './Loading';
 const fetchTodos = createQueryFn('/todos');
 
 export default function TodoList() {
-  const { data: todoData, isLoading } = useQuery(['todos'], fetchTodos);
+  const { data, isLoading } = useQuery(['todos'], fetchTodos);
 
   return (
     <ul className="todo-list-container">
       {isLoading && <Loading />}
-      {todoData?.map((todo) => (
+      {data?.todos?.map((todo) => (
         <TodoItem id={todo.id} done={todo.done} key={todo.id}>
           {todo.title}
         </TodoItem>
