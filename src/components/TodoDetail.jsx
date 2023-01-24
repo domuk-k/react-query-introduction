@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+
 import createQueryFn from '../util/createQueryFn';
+import Loading from './Loading';
 
 /**
  * 이 컴포넌트는 외부로 부터 todo개체의 id를 받아서 해당 id로 todo상세정보를 조회하고, 표현합니다.
@@ -13,7 +15,7 @@ function TodoDetail({ id }) {
   } = useQuery(['todos', id], createQueryFn(`/todo/${id}`));
 
   if (status === 'loading') {
-    return '상세 정보 가져오는 중..';
+    return <Loading />;
   }
 
   if (status === 'error') {

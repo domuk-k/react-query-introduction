@@ -3,6 +3,7 @@ import { TodoItem } from './TodoItem';
 
 import createQueryFn from '../util/createQueryFn';
 import { useQuery } from '@tanstack/react-query';
+import Loading from './Loading';
 
 const fetchTodos = createQueryFn('/todos');
 
@@ -11,7 +12,7 @@ export default function TodoList() {
 
   return (
     <ul className="todo-list-container">
-      {isLoading && <div>저장된 Todo 가져오는 중...</div>}
+      {isLoading && <Loading />}
       {todoData?.map((todo) => (
         <TodoItem id={todo.id} done={todo.done} key={todo.id}>
           {todo.title}
